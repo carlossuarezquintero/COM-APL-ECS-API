@@ -1,20 +1,15 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Store.Persistencia;
 using Store.Repositorios;
 using Store.Repositorios.Interfaces;
 using Store.Servicio.Queries;
 using Store.Servicio.Queries.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Store.Api
 {
@@ -40,7 +35,12 @@ namespace Store.Api
 
             services.AddTransient<IProductoRepositorio, ProductoRepositorio>();
 
+            //Conexion
 
+            services.AddDbContext<ApplicationDbContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("ConexionDB"));
+            });
 
             services.AddControllers();
             services.AddSwaggerGen(c =>
