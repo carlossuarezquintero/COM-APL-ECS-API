@@ -1,4 +1,6 @@
-﻿using Store.Dominio.Entidades;
+﻿using Microsoft.EntityFrameworkCore;
+using Store.Dominio.Entidades;
+using Store.Persistencia;
 using Store.Repositorios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,14 +12,38 @@ namespace Store.Repositorios
 {
     public class ProductoRepositorio : IProductoRepositorio
     {
-        public Task<Producto> ObtenerProductoIdAsync(int id)
+
+        private readonly ApplicationDbContext _context;
+
+        public ProductoRepositorio(ApplicationDbContext context)
         {
-            throw new NotImplementedException();
+            _context = context;
+
         }
 
-        public Task<IReadOnlyList<Producto>> ObtenerProductosAsync()
+        /// <summary>
+        /// Obtiene un producto por i
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<Producto> ObtenerProductoIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Productos
+                    .Include(p => p.Marca)
+                    .Include(P => P.Categoria)
+                    .FirstOrDefaultAsync(p => p.ProductoId == id);
+        }
+
+        /// <summary>
+        /// Obtiene todos los productos
+        /// </summary>
+        /// <returns></returns>
+        public async Task<IReadOnlyList<Producto>> ObtenerProductosAsync()
+        {
+            return await _context.Productos
+                    .Include(p => p.Marca)
+                    .Include(P => P.Categoria)
+                    .ToListAsync();
         }
     }
 }

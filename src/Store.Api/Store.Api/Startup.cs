@@ -28,13 +28,15 @@ namespace Store.Api
 
             //Interfaces Logica de negocios
 
-            services.AddTransient<IProductQueryService, ProductoQueryService>();
 
+            services.AddTransient<IProductoQueryService, ProductoQueryService>();
+            services.AddTransient<IMarcaQueryService, MarcaQueryService>();
+            services.AddTransient<ICategoriaQueryService, CategoriaQueryService>();
 
             // Interfaces Repositorios
 
             services.AddTransient<IProductoRepositorio, ProductoRepositorio>();
-
+            services.AddScoped(typeof(IGenericRepositorio<>),(typeof(GenericRepositorio<>)));
             //Conexion
 
             services.AddDbContext<ApplicationDbContext>(options =>

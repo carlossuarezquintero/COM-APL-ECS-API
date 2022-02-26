@@ -9,34 +9,32 @@ using System.Threading.Tasks;
 
 namespace Store.Servicio.Queries
 {
-    public class ProductoQueryService : IProductoQueryService
+    public class MarcaQueryService : IMarcaQueryService
     {
-        private readonly IProductoRepositorio _iproductoRepositorio;
-        private readonly IGenericRepositorio<Producto> _genericRepositorio;
-        public ProductoQueryService(IProductoRepositorio iproductoRepositorio, IGenericRepositorio<Producto> genericRepositorio)
+        private readonly IGenericRepositorio<Marca> _genericRepositorio;
+        public MarcaQueryService(IGenericRepositorio<Marca> genericRepositorio)
         {
-            _iproductoRepositorio = iproductoRepositorio;
             _genericRepositorio = genericRepositorio;
         }
 
-
         /// <summary>
-        /// Obtiene los productos por Id
+        /// Obtiene las Marcas por Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<Producto> ObtenerProductoIdAsync(int id)
+        public async Task<Marca> ObtenerMarcaIdAsync(int id)
         {
             return (await _genericRepositorio.ObtenerporIdAsync(id));
         }
 
         /// <summary>
-        /// Obtiene todos los productos
+        /// Obtiene todas las Marcas
         /// </summary>
         /// <returns></returns>
-        public async Task<IReadOnlyList<Producto>> ObtenerProductosAsync()
+        public async Task<IReadOnlyList<Marca>> ObtenerMarcaAsync()
         {
             return (await _genericRepositorio.ObtenertodoAsync());
         }
+
     }
 }
