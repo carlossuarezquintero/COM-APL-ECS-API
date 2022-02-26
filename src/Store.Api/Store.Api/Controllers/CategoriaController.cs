@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Store.Api.Errors;
 using Store.Dominio.Entidades;
 using Store.Servicio.Queries.Interfaces;
 using System;
@@ -10,9 +11,6 @@ using System.Threading.Tasks;
 
 namespace Store.Api.Controllers
 {
-    /// <summary>
-    /// Controlador de categorias
-    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriaController : ControllerBase
@@ -45,9 +43,13 @@ namespace Store.Api.Controllers
         /// <returns></returns>
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Categoria>>> ObtenerMarcaId(int id)
+        public async Task<ActionResult<Categoria>> ObtenerMarcaId(int id)
         {
             var categoria = await _icategoriaQueryService.ObtenerCategoriaIdAsync(id);
+            if (categoria == null)
+            {
+                return NotFound(new ErrorResponse(404, "No se encontro el registro "));
+            }
             return Ok(categoria);
         }
 

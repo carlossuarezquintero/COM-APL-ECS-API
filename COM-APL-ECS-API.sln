@@ -17,19 +17,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "06. Test", "06. Test", "{45
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "07.  Comun", "07.  Comun", "{3813D273-B555-42A5-8988-68E62434EA20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Api", "src\Store.Api\Store.Api\Store.Api.csproj", "{EB5F5C7C-55FC-4537-8016-4B23DB28625A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Api", "src\Store.Api\Store.Api\Store.Api.csproj", "{EB5F5C7C-55FC-4537-8016-4B23DB28625A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Persistencia", "src\Store.Persistencia\Store.Persistencia.csproj", "{5D868A1D-D4E6-40A5-BFDD-D4D992AAE313}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Persistencia", "src\Store.Persistencia\Store.Persistencia.csproj", "{5D868A1D-D4E6-40A5-BFDD-D4D992AAE313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Servicio.EventHandler", "src\Store.Servicio.EventHandler\Store.Servicio.EventHandler.csproj", "{9B79DA46-821F-42EB-9906-D41644636474}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Servicio.EventHandler", "src\Store.Servicio.EventHandler\Store.Servicio.EventHandler.csproj", "{9B79DA46-821F-42EB-9906-D41644636474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Dominio", "src\Store.Dominio\Store.Dominio.csproj", "{113B0685-7C4E-46CE-A0DD-9FFCEEFC5088}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Dominio", "src\Store.Dominio\Store.Dominio.csproj", "{113B0685-7C4E-46CE-A0DD-9FFCEEFC5088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Test", "src\Store.Test\Store.Test.csproj", "{78D55C09-5977-48C9-AA87-B34C91A93B66}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Test", "src\Store.Test\Store.Test.csproj", "{78D55C09-5977-48C9-AA87-B34C91A93B66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Repositorios", "src\Store.Repositorios\Store.Repositorios.csproj", "{7DE31B21-CB36-4127-BD46-2C88DE2038B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Repositorios", "src\Store.Repositorios\Store.Repositorios.csproj", "{7DE31B21-CB36-4127-BD46-2C88DE2038B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Store.Servicio.Queries", "src\Store.Servicio.Queries\Store.Servicio.Queries.csproj", "{A404880A-B6A8-4F33-8801-9B6CC556B482}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Store.Servicio.Queries", "src\Store.Servicio.Queries\Store.Servicio.Queries.csproj", "{A404880A-B6A8-4F33-8801-9B6CC556B482}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

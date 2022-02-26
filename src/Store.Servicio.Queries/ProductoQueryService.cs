@@ -27,7 +27,7 @@ namespace Store.Servicio.Queries
         /// <returns></returns>
         public async Task<Producto> ObtenerProductoIdAsync(int id)
         {
-            return (await _genericRepositorio.ObtenerporIdAsync(id));
+            return (await _iproductoRepositorio.ObtenerProductoIdAsync(id));
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Store.Servicio.Queries
         /// <returns></returns>
         public async Task<IReadOnlyList<Producto>> ObtenerProductosAsync()
         {
-            return (await _genericRepositorio.ObtenertodoAsync());
+            return (await _iproductoRepositorio.ObtenerProductosAsync());
         }
     }
 }

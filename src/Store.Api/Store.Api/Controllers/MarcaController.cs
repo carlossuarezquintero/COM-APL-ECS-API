@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Store.Api.Errors;
 using Store.Dominio.Entidades;
 using Store.Servicio.Queries.Interfaces;
 using System;
@@ -43,9 +44,13 @@ namespace Store.Api.Controllers
         /// <returns></returns>
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<List<Producto>>> ObtenermarcasId(int id)
+        public async Task<ActionResult<Producto>> ObtenermarcasId(int id)
         {
             var marca = await _imarcaQueryService.ObtenerMarcaIdAsync(id);
+            if (marca == null)
+            {
+                return NotFound(new ErrorResponse(404, "No se encontro el registro "));
+            }
             return Ok(marca);
         }
 

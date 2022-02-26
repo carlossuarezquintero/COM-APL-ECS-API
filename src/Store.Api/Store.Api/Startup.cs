@@ -5,10 +5,12 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Store.Api.Middleware;
 using Store.Persistencia;
 using Store.Repositorios;
 using Store.Repositorios.Interfaces;
 using Store.Servicio.Queries;
+using Store.Servicio.Queries.Dto;
 using Store.Servicio.Queries.Interfaces;
 
 namespace Store.Api
@@ -25,6 +27,8 @@ namespace Store.Api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddAutoMapper(typeof(MappingProfiles));
 
             //Interfaces Logica de negocios
 
@@ -60,6 +64,11 @@ namespace Store.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Store.Api v1"));
             }
+
+
+            app.UseMiddleware<ExceptionMiddleware>();
+
+            app.UseStatusCodePagesWithReExecute("/errors", "?code={0}");
 
             app.UseHttpsRedirection();
 
