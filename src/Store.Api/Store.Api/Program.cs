@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Store.Dominio.Entidades;
 using Store.Persistencia;
 using Store.Persistencia.Seed;
 using System;
@@ -29,6 +31,11 @@ namespace Store.Api
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     await context.Database.MigrateAsync();
                     await DatosSemilla.CargarData(context, loggerfactory);
+
+                    var userManager = services.GetRequiredService<UserManager<Usuario>>();
+                    var IdentityContext = services.GetRequiredService<SeguridadDbContext>();
+                    await IdentityContext.Database.MigrateAsync();
+                    await SeguridadDatoSemilla.seguridadatosemilla(userManager);
                 }
                 catch (Exception ex)
                 {

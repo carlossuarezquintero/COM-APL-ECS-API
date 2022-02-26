@@ -8,4 +8,11 @@
     <ProjectReference Include="..\Store.Persistencia\Store.Persistencia.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+	<PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+	<PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+	   
+  </ItemGroup>
+
 </Project>

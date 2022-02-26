@@ -13,6 +13,7 @@ namespace Store.Servicio.Queries.Dto
         public MappingProfiles()
         {
             CreateMap<Producto, ProductoDto>();
+            CreateMap<Direccion, DireccionDto>().ReverseMap();
         }
     }
 }

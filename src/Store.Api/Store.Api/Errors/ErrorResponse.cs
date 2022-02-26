@@ -19,6 +19,7 @@ namespace Store.Api.Errors
                         400 =>  "El request enviado tiene errores",
                         401 =>  "No tienes autorizacion para este recurso",
                         404 =>  "El recurso no se encontro disponible",
+                        405 =>  "El method usado no es permitido",
                         500 =>  "Error en el servidor",
                         _   => null,
                      };
