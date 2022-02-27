@@ -100,6 +100,8 @@ namespace Store.Api.Controllers
         ///  Actualizar Usuarios
         /// </summary>
         /// <returns></returns>
+        /// 
+        [Authorize]
         [HttpPatch("actualizar")]
         public async Task<ActionResult<UsuarioDto>> Actualizar(UsuarioComandoActualizar command)
         {
@@ -146,7 +148,7 @@ namespace Store.Api.Controllers
         /// </summary>
         /// <returns></returns>
 
-
+        [Authorize]
         [HttpGet("usuario/{id}")]
         public async Task<ActionResult<UsuarioDto>> ObtenerUsuariobyid(string id)
         {
@@ -201,7 +203,7 @@ namespace Store.Api.Controllers
         /// <param name="id"></param>
         /// <param name="roleparam"></param>
         /// <returns></returns>
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPut("role")]
         public async Task<ActionResult<UsuarioDto>> Actualizarol( RoleDto roleParam)
         {
@@ -227,6 +229,7 @@ namespace Store.Api.Controllers
                 if (resultado.Succeeded)
                 {
                     usuarioDto.Admin = true;
+                    usuarioDto.Role = roleParam.Nombre;
                 }
 
                 if (resultado.Errors.Any())
@@ -257,7 +260,7 @@ namespace Store.Api.Controllers
         /// </summary>
         /// <param name="email"></param>
         /// <returns></returns>
-
+        [Authorize]
         [HttpGet("emailvalido")]
 
         public async Task<ActionResult<bool>> ValidarEmail([FromQuery] String email)

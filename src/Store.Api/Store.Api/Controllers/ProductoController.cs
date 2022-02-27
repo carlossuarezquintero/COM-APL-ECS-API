@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -51,7 +52,7 @@ namespace Store.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-
+        
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductoDto>> ObtenerProductosId(int id)
         {
@@ -69,7 +70,8 @@ namespace Store.Api.Controllers
         /// <summary>
         /// Crear un producto
         /// </summary>
-       [HttpPost]
+        [Authorize(Roles = "ADMIN")]
+        [HttpPost]
         public async Task<IActionResult> crear(ProductoComandoCrear command)
         {
             var id = await _mediator.Send(command);
@@ -85,6 +87,7 @@ namespace Store.Api.Controllers
         /// <summary>
         /// Actualizar producto
         /// </summary>
+        [Authorize(Roles = "ADMIN")]
         [HttpPatch]
         public async Task<IActionResult> Actualizar(ProductoComandoActualizar command)
         {

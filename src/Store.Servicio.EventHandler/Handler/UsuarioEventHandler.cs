@@ -73,8 +73,7 @@ namespace Store.Servicio.EventHandler.Handler
             var key = Encoding.ASCII.GetBytes(secretKey);
 
             var roles = await _userManager.GetRolesAsync(user);
-            string auxrol = null;
-            if (!roles.IsNullOrEmpty()) {  auxrol = roles[0]; }
+           
 
             bool roladmin = roles.Contains("ADMIN") ? true : false;
             var claims = new List<Claim>
@@ -83,9 +82,16 @@ namespace Store.Servicio.EventHandler.Handler
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.Nombre),
                 new Claim(ClaimTypes.Surname, user.Apellido),
-                new Claim(ClaimTypes.Role,auxrol)
+                
             };
-
+           
+            if (roles != null && roles.Count > 0)
+            {
+                foreach (var role in roles)
+                {
+                    claims.Add(new Claim(ClaimTypes.Role, role));
+                }
+            }
 
 
             var tokenDescriptor = new SecurityTokenDescriptor
