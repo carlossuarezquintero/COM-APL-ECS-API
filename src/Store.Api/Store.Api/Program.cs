@@ -11,6 +11,7 @@ using Store.Persistencia.Seed;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Store.Api
@@ -24,10 +25,12 @@ namespace Store.Api
 
             using (var scope = host.Services.CreateScope())
             {
+
                 var services = scope.ServiceProvider;
                 var loggerfactory = services.GetRequiredService<ILoggerFactory>();
                 try
                 {
+                    
                     var context = services.GetRequiredService<ApplicationDbContext>();
                     await context.Database.MigrateAsync();
                     await DatosSemilla.CargarData(context, loggerfactory);
@@ -36,6 +39,8 @@ namespace Store.Api
                     var IdentityContext = services.GetRequiredService<SeguridadDbContext>();
                     await IdentityContext.Database.MigrateAsync();
                     await SeguridadDatoSemilla.seguridadatosemilla(userManager);
+
+
                 }
                 catch (Exception ex)
                 {

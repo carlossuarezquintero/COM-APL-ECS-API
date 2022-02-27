@@ -19,6 +19,8 @@ using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using StackExchange.Redis;
+using System;
 
 namespace Store.Api
 {
@@ -39,7 +41,7 @@ namespace Store.Api
             builder = new IdentityBuilder(builder.UserType, builder.Services);
             builder.AddEntityFrameworkStores<SeguridadDbContext>();
             builder.AddSignInManager<SignInManager<Usuario>>();
-            
+
 
 
             var secretKey = Encoding.ASCII.GetBytes(
@@ -61,24 +63,31 @@ namespace Store.Api
 
             services.AddAutoMapper(typeof(MappingProfiles));
             //
+
             services.AddMediatR(Assembly.Load("Store.Servicio.EventHandler"));
+
 
             //Interfaces Logica de negocios
 
-
+           services.AddScoped<ICarritoCompraQueryService, CarritoCompraQueryService>();
             services.AddTransient<IProductoQueryService, ProductoQueryService>();
+
             services.AddTransient<IMarcaQueryService, MarcaQueryService>();
             services.AddTransient<ICategoriaQueryService, CategoriaQueryService>();
 
             // Interfaces Repositorios
-
+            services.AddScoped<ICarritoCompraRepositorio, CarritoCompraRepositorio>();
             services.AddTransient<IProductoRepositorio, ProductoRepositorio>();
-            services.AddScoped(typeof(IGenericRepositorio<>),(typeof(GenericRepositorio<>)));
-            //Conexion
+            services.AddScoped(typeof(IGenericRepositorio<>), (typeof(GenericRepositorio<>)));
+
+            services.AddSingleton<IConnectionMultiplexer>(c =>
+            {
+                var configuration = ConfigurationOptions.Parse(Configuration.GetConnectionString("Redis"), true);
+                return ConnectionMultiplexer.Connect(configuration);
+            });
 
 
-            
-
+            //Conexiones
             services.AddDbContext<ApplicationDbContext>(options =>
             {
                 options.UseSqlServer(Configuration.GetConnectionString("ConexionDB"));
@@ -88,6 +97,9 @@ namespace Store.Api
             {
                 options.UseSqlServer(Configuration.GetConnectionString("ConexionDBIdentity"));
             });
+
+
+
 
 
             services.AddCors(opt =>
