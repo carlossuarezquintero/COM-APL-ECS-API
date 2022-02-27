@@ -10,7 +10,7 @@ namespace Store.Persistencia.Seed
 {
     public class SeguridadDatoSemilla
     {
-        public static async Task seguridadatosemilla(UserManager<Usuario> userManager)
+        public static async Task seguridadatosemilla(UserManager<Usuario> userManager,RoleManager<IdentityRole> roleManager)
         {
             if (!userManager.Users.Any())
             {
@@ -30,6 +30,16 @@ namespace Store.Persistencia.Seed
                 };
 
                 var result= await userManager.CreateAsync(usuario, "27378859Ca*");
+
+            }
+
+            if (!roleManager.Roles.Any())
+            {
+                var role = new IdentityRole
+                {
+                    Name = "ADMIN"
+                };
+                await roleManager.CreateAsync(role);
 
             }
         }

@@ -14,6 +14,7 @@ namespace Store.Servicio.Queries.Dto
         {
             CreateMap<Producto, ProductoDto>();
             CreateMap<Direccion, DireccionDto>().ReverseMap();
+            CreateMap<Usuario, UsuarioDto>();
             
         }
     }

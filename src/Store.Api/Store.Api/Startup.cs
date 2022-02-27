@@ -21,6 +21,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using StackExchange.Redis;
 using System;
+using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Store.Api
 {
@@ -39,6 +41,7 @@ namespace Store.Api
             // Inyeccion Contexto de seguridad 
             var builder = services.AddIdentityCore<Usuario>();
             builder = new IdentityBuilder(builder.UserType, builder.Services);
+            builder.AddRoles<IdentityRole>();
             builder.AddEntityFrameworkStores<SeguridadDbContext>();
             builder.AddSignInManager<SignInManager<Usuario>>();
 
@@ -87,6 +90,7 @@ namespace Store.Api
             });
 
 
+            services.TryAddSingleton<ISystemClock, SystemClock>();
             //Conexiones
             services.AddDbContext<ApplicationDbContext>(options =>
             {

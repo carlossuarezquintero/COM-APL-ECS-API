@@ -7,6 +7,7 @@ using Store.Dominio.Entidades;
 using Store.Persistencia;
 using Store.Servicio.EventHandler.Command;
 using Store.Servicio.EventHandler.Responses;
+using Store.Servicio.Queries.Dto;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -23,6 +24,7 @@ namespace Store.Servicio.EventHandler.Handler
         private readonly SignInManager<Usuario> _signInManager;
         private readonly SeguridadDbContext _context;
         private readonly IConfiguration _configuration;
+       
 
 
         public UsuarioEventHandler(SeguridadDbContext context, SignInManager<Usuario> signInManager, UserManager<Usuario> userManager,IConfiguration configuration)
@@ -31,6 +33,7 @@ namespace Store.Servicio.EventHandler.Handler
             _signInManager = signInManager;
             _userManager = userManager;
             _configuration=configuration;
+
     }
 
         public async Task<IdentityAccess> Handle(UsuarioComandoLogear request, CancellationToken cancellationToken)
@@ -63,17 +66,24 @@ namespace Store.Servicio.EventHandler.Handler
             return await _userManager.CreateAsync(entry, request.Password);
         }
 
+
         private async Task GenerateToken(Usuario user, IdentityAccess identity)
         {
             var secretKey = _configuration["SecretKey"];
             var key = Encoding.ASCII.GetBytes(secretKey);
 
+            var roles = await _userManager.GetRolesAsync(user);
+            string auxrol = null;
+            if (!roles.IsNullOrEmpty()) {  auxrol = roles[0]; }
+
+            bool roladmin = roles.Contains("ADMIN") ? true : false;
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.Id),
                 new Claim(ClaimTypes.Email, user.Email),
                 new Claim(ClaimTypes.Name, user.Nombre),
-                new Claim(ClaimTypes.Surname, user.Apellido)
+                new Claim(ClaimTypes.Surname, user.Apellido),
+                new Claim(ClaimTypes.Role,auxrol)
             };
 
 

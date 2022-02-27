@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Store.Persistencia;
 
 namespace Store.Persistencia.Identity.Migratrions
 {
     [DbContext(typeof(SeguridadDbContext))]
-    partial class SeguridadDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220227021414_adicionarimagen")]
+    partial class adicionarimagen
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

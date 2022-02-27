@@ -7,6 +7,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Store.Persistencia\Store.Persistencia.csproj" />
     <ProjectReference Include="..\Store.Repositorios\Store.Repositorios.csproj" />
+    <ProjectReference Include="..\Store.Servicio.Queries\Store.Servicio.Queries.csproj" />
   </ItemGroup>
 
   <ItemGroup>

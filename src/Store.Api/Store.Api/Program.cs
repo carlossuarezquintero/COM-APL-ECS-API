@@ -36,9 +36,10 @@ namespace Store.Api
                     await DatosSemilla.CargarData(context, loggerfactory);
 
                     var userManager = services.GetRequiredService<UserManager<Usuario>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     var IdentityContext = services.GetRequiredService<SeguridadDbContext>();
                     await IdentityContext.Database.MigrateAsync();
-                    await SeguridadDatoSemilla.seguridadatosemilla(userManager);
+                    await SeguridadDatoSemilla.seguridadatosemilla(userManager,roleManager);
 
 
                 }
