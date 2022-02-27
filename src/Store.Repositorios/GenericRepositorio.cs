@@ -19,6 +19,19 @@ namespace Store.Repositorios
 
         }
 
+        public async Task<int> Actualizar(T entity)
+        {
+            _context.Set<T>().Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
+            return await _context.SaveChangesAsync();
+        }
+
+        public async Task<int> Agregar(T entity)
+        {
+            _context.Set<T>().Add(entity);
+            return await _context.SaveChangesAsync();
+        }
+
         public async Task<T> ObtenerporIdAsync(int id)
         {
             return await _context.Set<T>().FindAsync(id);

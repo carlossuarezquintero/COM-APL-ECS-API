@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
+using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Store.Api.Errors;
 using Store.Dominio.Entidades;
+using Store.Servicio.EventHandler.Command.Productos;
 using Store.Servicio.Queries.Dto;
 using Store.Servicio.Queries.Interfaces;
 using System;
@@ -21,13 +23,15 @@ namespace Store.Api.Controllers
         private readonly ILogger<ProductoController> _logger;
         private readonly IProductoQueryService _iproductoQueryService;
         private readonly IMapper _mapper;
+        private readonly IMediator _mediator;
 
-        public ProductoController(IProductoQueryService iproductoQueryService, ILogger<ProductoController> logger, IMapper mapper)
+        public ProductoController(IProductoQueryService iproductoQueryService, ILogger<ProductoController> logger, IMapper mapper, IMediator mediator)
         {
             _iproductoQueryService = iproductoQueryService;
             _logger = logger;
             _mapper = mapper;
-        }
+            _mediator= mediator;
+    }
 
         /// <summary>
         /// Obtiene todos los productos
@@ -61,6 +65,36 @@ namespace Store.Api.Controllers
             return _mapper.Map<Producto, ProductoDto>(producto);
 
         }
+
+        /// <summary>
+        /// Crear un producto
+        /// </summary>
+       [HttpPost]
+        public async Task<IActionResult> crear(ProductoComandoCrear command)
+        {
+            var id = await _mediator.Send(command);
+
+            if (id == 0)
+            {
+                return NotFound(new ErrorResponse(404, "No se pudo crear el producto "));
+            }
+
+            return Ok(id);
+        }
+
+        /// <summary>
+        /// Actualizar producto
+        /// </summary>
+        [HttpPatch]
+        public async Task<IActionResult> Actualizar(ProductoComandoActualizar command)
+        {
+
+            var respuesta = await _mediator.Send(command);
+            if (respuesta==0) { return BadRequest("No se puedo crear el producto"); }
+            return Ok();
+
+        }
+
 
     }
 }

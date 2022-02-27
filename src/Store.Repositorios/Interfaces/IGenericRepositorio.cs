@@ -11,5 +11,9 @@ namespace Store.Repositorios.Interfaces
     {
         Task<T> ObtenerporIdAsync(int id);
         Task<IReadOnlyList<T>> ObtenertodoAsync();
+
+        Task<int> Agregar(T entity);
+
+        Task<int> Actualizar(T entity);
     }
 }
