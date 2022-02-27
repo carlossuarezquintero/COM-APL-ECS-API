@@ -23,11 +23,7 @@ namespace Store.Persistencia
 
         public DbSet<Categoria> Categorias { get; set; }
 
-        public DbSet<OrdenCompras> OrdenCompras { get; set; }
 
-        public DbSet<OrdenItem> OrdenItems { get; set; }
-
-        public DbSet<TipoEnvio> TipoEnvios { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

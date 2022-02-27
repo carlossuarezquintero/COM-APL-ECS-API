@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Store.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Store.Api.Controllers.CarritoCompraController.ObtenerCarritoPorId(System.String)">
+            <summary>
+            Este metodo obtiene un carrito de compra y si es primera vez que toma el carrito crea uno
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.CarritoCompraController.ActualizarCarritoCompra(Store.Servicio.EventHandler.Command.Carrito.CarritoComandoCrear)">
+            <summary>
+            Este metodo permite ir agregando productos al carrito y actualizando el carrito
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.CategoriaController.ObtenerMarcas">
+            <summary>
+            Obtiene todas las categorias
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.CategoriaController.ObtenerMarcaId(System.Int32)">
+            <summary>
+            Obtiene una categoria por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.MarcaController.ObtenerMarcas">
+            <summary>
+            Obtiene todas las marcas
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.MarcaController.ObtenermarcasId(System.Int32)">
+            <summary>
+            Obtiene una marca por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductoController.ObtenerProductos">
+            <summary>
+            Obtiene todos los productos
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductoController.ObtenerProductosId(System.Int32)">
+            <summary>
+            Obtiene un producto por ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductoController.crear(Store.Servicio.EventHandler.Command.Productos.ProductoComandoCrear)">
+            <summary>
+            Crear un producto
+            </summary>
+        </member>
+        <member name="M:Store.Api.Controllers.ProductoController.Actualizar(Store.Servicio.EventHandler.Command.Productos.ProductoComandoActualizar)">
+            <summary>
+            Actualizar producto
+            </summary>
+        </member>
+        <member name="M:Store.Api.Controllers.UsuarioController.Authentication(Store.Servicio.EventHandler.Command.UsuarioComandoLogear)">
+            <summary>
+            Inicio de sesión
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.UsuarioController.Crear(Store.Servicio.EventHandler.Command.UsuarioComandoCrear)">
+            <summary>
+            Crear Usuario
+            </summary>
+            <param name="command"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.UsuarioController.Actualizar(Store.Servicio.EventHandler.Command.Usuarios.UsuarioComandoActualizar)">
+            <summary>
+             Actualizar Usuarios
+            </summary>
+            <returns></returns>
+            
+        </member>
+        <member name="M:Store.Api.Controllers.UsuarioController.ObtenerUsuariobyid(System.String)">
+            <summary>
+             Decifra el token y obtiene los datos del usuario 
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.UsuarioController.Actualizarol(Store.Servicio.Queries.Dto.RoleDto)">
+            <summary>
+             Asignar rol a un usuario
+            </summary>
+            <param name="id"></param>
+            <param name="roleparam"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.UsuarioController.ValidarEmail(System.String)">
+            <summary>
+             Valida si un email ya existe en la base de datos
+            </summary>
+            <param name="email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.UsuarioController.ObtenerDireccion">
+            <summary>
+            Decifra el token y obtiene la direccion
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Store.Api.Controllers.UsuarioController.Actualizardireccion(Store.Servicio.Queries.Dto.DireccionDto)">
+            <summary>
+            Actualizar direccion
+            </summary>
+            <param name=""></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

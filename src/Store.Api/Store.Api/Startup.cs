@@ -110,7 +110,7 @@ namespace Store.Api
             {
                 opt.AddPolicy("CorsRule", rule =>
                 {
-                    rule.AllowAnyHeader().AllowAnyMethod().WithOrigins("");
+                    rule.AllowAnyHeader().AllowAnyMethod().WithOrigins("*");
                 });
             });
 
