@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Store.Dominio.Entidades;
+using Store.Dominio.Entidades.OrdenCompra;
 using Store.Persistencia.Configuracion;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,12 @@ namespace Store.Persistencia
 
         public DbSet<Categoria> Categorias { get; set; }
 
+        public DbSet<OrdenCompras> OrdenCompras { get; set; }
+
+        public DbSet<OrdenItem> OrdenItems { get; set; }
+
+        public DbSet<TipoEnvio> TipoEnvios { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
@@ -30,6 +37,7 @@ namespace Store.Persistencia
         private void ModelConfig(ModelBuilder modelBuilder)
         {
             new ProductoConfiguracion(modelBuilder.Entity<Producto>());
+            
 
         }
     }

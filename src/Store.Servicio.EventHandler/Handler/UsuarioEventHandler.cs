@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace Store.Servicio.EventHandler.Handler
 {
     public class UsuarioEventHandler : IRequestHandler<UsuarioComandoLogear, IdentityAccess>, IRequestHandler<UsuarioComandoCrear, IdentityResult>
@@ -24,17 +25,17 @@ namespace Store.Servicio.EventHandler.Handler
         private readonly SignInManager<Usuario> _signInManager;
         private readonly SeguridadDbContext _context;
         private readonly IConfiguration _configuration;
-       
 
 
-        public UsuarioEventHandler(SeguridadDbContext context, SignInManager<Usuario> signInManager, UserManager<Usuario> userManager,IConfiguration configuration)
+
+        public UsuarioEventHandler(SeguridadDbContext context, SignInManager<Usuario> signInManager, UserManager<Usuario> userManager, IConfiguration configuration)
         {
             _context = context;
             _signInManager = signInManager;
             _userManager = userManager;
-            _configuration=configuration;
+            _configuration = configuration;
 
-    }
+        }
 
         public async Task<IdentityAccess> Handle(UsuarioComandoLogear request, CancellationToken cancellationToken)
         {
@@ -54,6 +55,8 @@ namespace Store.Servicio.EventHandler.Handler
 
         public async Task<IdentityResult> Handle(UsuarioComandoCrear request, CancellationToken cancellationToken)
         {
+
+            
             var entry = new Usuario
             {
                 UserName = request.UserName,
