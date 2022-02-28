@@ -10,7 +10,7 @@
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 
-[![Gitter](https://badges.gitter.im/jquery/jquery.svg)](https://gitter.im/jquery/jquery?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
+
 
 General :computer:
 --------------------------------------
@@ -48,12 +48,4 @@ En pro de cumplir con el objetivo de mantener las mejores practicas de desarollo
 
 Para ejecutar el proyecto 
 
-Environments in which to use jQuery
---------------------------------------
-
-
-Questions?
-----------
-
-Si tienes alguna pregunta sobre el proyecto contactme;
 
