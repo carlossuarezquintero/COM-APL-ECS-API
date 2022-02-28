@@ -1,6 +1,7 @@
 [E-Carvajal Store][API]:convenience_store: — Proyecto para especialista de desarollo 
 ==================================================
-
+STACK : NET 5 + SQL SERVER + REDIS
+==================================================
 ![Google Chrome](https://img.shields.io/badge/Google%20Chrome-4285F4?style=for-the-badge&logo=GoogleChrome&logoColor=white)
 ![Firefox](https://img.shields.io/badge/Firefox-FF7139?style=for-the-badge&logo=Firefox-Browser&logoColor=white)
 ![Safari](https://img.shields.io/badge/Safari-000000?style=for-the-badge&logo=Safari&logoColor=white)
@@ -18,7 +19,7 @@ General :computer:
 E-Carvajal store [API]  es un proyecto desarollado en c# en el marco de trabajo NET 5 en arquitectura de Clean Architecture / Microservicios . a Este proyecto le fue modificado su metodo principal para Despliegue e intregacion continua. 
 
 
-### Bases de datos :file_folder:
+### Bases de datos 
 
 E-Carvajal store [API] implementa CodeFirst + Repository Pattern lo que permite manipular diferentes bases motores de bases de datos.
 
@@ -67,3 +68,14 @@ Para ejecutar el proyecto se debe configurar las cadenas de ejecución a las 3 b
 
 
 ![_firebaseback](https://firebasestorage.googleapis.com/v0/b/storeapp-c5f8a.appspot.com/o/repo%2Fstrings.gif?alt=media&token=f181750a-75bd-4be8-8aff-712c927406c5)
+
+![_ejecucion](https://firebasestorage.googleapis.com/v0/b/storeapp-c5f8a.appspot.com/o/repo%2Fejecucion.gif?alt=media&token=eff8f9e6-f681-4d9f-8ab8-51c82a16f492)
+
+
+### Documentacion
+
+La documentación de los endpoint puede ser visible  en :
+
+https://localhost:44362/swagger
+
+
