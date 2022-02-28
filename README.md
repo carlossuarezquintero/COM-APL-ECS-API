@@ -23,7 +23,7 @@ E-Carvajal store [API]  es un proyecto desarollado en c# en el marco de trabajo 
 
 E-Carvajal store [API] implementa CodeFirst + Repository Pattern lo que permite manipular diferentes bases motores de bases de datos.
 
-1)Sql Server [Relationa]
+1)Sql Server [Relational]
 
 2)Redis [Key,Value]
 
