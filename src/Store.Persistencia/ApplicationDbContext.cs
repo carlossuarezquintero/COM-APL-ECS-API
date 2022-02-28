@@ -23,6 +23,7 @@ namespace Store.Persistencia
 
         public DbSet<Categoria> Categorias { get; set; }
 
+       public virtual DbSet<ProductoStore> ProductoStore { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder builder)

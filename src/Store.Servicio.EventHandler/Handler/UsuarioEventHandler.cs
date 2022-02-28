@@ -19,7 +19,7 @@ using System.Threading.Tasks;
 
 namespace Store.Servicio.EventHandler.Handler
 {
-    public class UsuarioEventHandler : IRequestHandler<UsuarioComandoLogear, IdentityAccess>, IRequestHandler<UsuarioComandoCrear, IdentityResult>
+    public class UsuarioEventHandler : IRequestHandler<UsuarioComandoLogear, IdentityAccess>, IRequestHandler<UsuarioComandoCrear, UsuarioDto>
     {
         private readonly UserManager<Usuario> _userManager;
         private readonly SignInManager<Usuario> _signInManager;
@@ -53,7 +53,7 @@ namespace Store.Servicio.EventHandler.Handler
             return result;
         }
 
-        public async Task<IdentityResult> Handle(UsuarioComandoCrear request, CancellationToken cancellationToken)
+        public async Task<UsuarioDto> Handle(UsuarioComandoCrear request, CancellationToken cancellationToken)
         {
 
             
@@ -66,7 +66,23 @@ namespace Store.Servicio.EventHandler.Handler
 
             };
 
-            return await _userManager.CreateAsync(entry, request.Password);
+            var rta = await _userManager.CreateAsync(entry, request.Password);
+
+            if (!rta.Succeeded)
+            {
+                return null;
+            }
+
+            var entry2 = new UsuarioDto
+            {
+                Username = request.UserName,
+                Nombre = request.Nombre,
+                Apellido = request.Apellido,
+                Email = request.Email,
+
+            };
+
+            return entry2;
         }
 
 
@@ -110,7 +126,7 @@ namespace Store.Servicio.EventHandler.Handler
             var tokenHandler = new JwtSecurityTokenHandler();
             var createdToken = tokenHandler.CreateToken(tokenDescriptor);
 
-            identity.AccessToken = tokenHandler.WriteToken(createdToken);
+            identity.Token = tokenHandler.WriteToken(createdToken);
         }
     }
 }

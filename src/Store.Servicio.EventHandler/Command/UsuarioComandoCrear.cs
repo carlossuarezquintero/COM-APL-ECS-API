@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using Store.Servicio.EventHandler.Responses;
+using Store.Servicio.Queries.Dto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Store.Servicio.EventHandler.Command
 {
-    public class UsuarioComandoCrear : IRequest<IdentityResult>
+    public class UsuarioComandoCrear : IRequest<UsuarioDto>
     {
         [Required(ErrorMessage = "El usuario es requerido")]
         

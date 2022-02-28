@@ -1,19 +1,20 @@
 ﻿using Store.Dominio.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Servicio.Queries.Dto
+namespace Store.Dominio.Entidades
 {
-    public class ProductoDto : EntidadBase
+    public class ProductoStore : EntidadBase
     {
-  
+        [Key]
         public int ProductoId { get; set; }
 
         public int Stock { get; set; }
-
 
         public int MarcaId { get; set; }
 
@@ -23,7 +24,7 @@ namespace Store.Servicio.Queries.Dto
 
         public string CategoriaNombre { get; set; }
 
-    
+        [Column(TypeName = "decimal(18,2)")]
         public decimal Precio { get; set; }
 
         public string Imagen { get; set; }

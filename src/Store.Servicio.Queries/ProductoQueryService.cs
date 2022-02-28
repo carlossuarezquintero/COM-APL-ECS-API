@@ -1,5 +1,8 @@
-﻿using Store.Dominio.Entidades;
+﻿using Servicio.Comun.Coleccion;
+using Servicio.Comun.Mapeo;
+using Store.Dominio.Entidades;
 using Store.Repositorios.Interfaces;
+using Store.Servicio.Queries.Dto;
 using Store.Servicio.Queries.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -34,9 +37,12 @@ namespace Store.Servicio.Queries
         /// Obtiene todos los productos
         /// </summary>
         /// <returns></returns>
-        public async Task<IReadOnlyList<Producto>> ObtenerProductosAsync()
+        public async Task<DatosColeccion<ProductoDto>> ObtenerProductosAsync(int pagina, int registros, IEnumerable<int> productos = null)
         {
-            return (await _iproductoRepositorio.ObtenerProductosAsync());
+
+            var collection = await _iproductoRepositorio.ObtenerProductosAsync(pagina, registros, productos);
+             
+            return collection.MapTo<DatosColeccion<ProductoDto>>();
         }
     }
 }

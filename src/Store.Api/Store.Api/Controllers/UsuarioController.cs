@@ -85,7 +85,7 @@ namespace Store.Api.Controllers
             {
                 var result = await _mediator.Send(command);
 
-                if (!result.Succeeded)
+                if (result == null)
                 {
                     return Unauthorized(new ErrorResponse(400, "Los datos ingresados no son validos "));
                 }

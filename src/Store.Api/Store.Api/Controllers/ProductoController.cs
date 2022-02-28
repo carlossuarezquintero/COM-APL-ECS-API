@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Servicio.Comun.Coleccion;
 using Store.Api.Errors;
 using Store.Dominio.Entidades;
 using Store.Servicio.EventHandler.Command.Productos;
@@ -37,13 +38,23 @@ namespace Store.Api.Controllers
         /// <summary>
         /// Obtiene todos los productos
         /// </summary>
+        /// <param name="pagina"></param>
+        /// <param name="registros"></param>
+        /// <param name="ids"></param>
         /// <returns></returns>
         
         [HttpGet]
-        public async Task<ActionResult<List<ProductoDto>>> ObtenerProductos()
+        public async Task<ActionResult<DatosColeccion<ProductoDto>>> ObtenerProductos(int pagina = 1, int registros = 10, string? ids = null)
         {
-            var productos = await _iproductoQueryService.ObtenerProductosAsync();
-            return Ok(_mapper.Map<IReadOnlyList<Producto>, IReadOnlyList<ProductoDto>>(productos));
+            IEnumerable<int> productoslist = null;
+
+            if (!string.IsNullOrEmpty(ids))
+            {
+                productoslist = ids.Split(',').Select(x => Convert.ToInt32(x));
+            }
+
+            var productos = await _iproductoQueryService.ObtenerProductosAsync(pagina, registros, productoslist);
+            return Ok(productos);
              
         }
 

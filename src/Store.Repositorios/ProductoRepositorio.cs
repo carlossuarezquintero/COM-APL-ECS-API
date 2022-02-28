@@ -1,11 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Servicio.Comun.Coleccion;
+using Servicio.Comun.Mapeo;
+using Servicio.Comun.Paginacion;
 using Store.Dominio.Entidades;
 using Store.Persistencia;
 using Store.Repositorios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Store.Repositorios
@@ -38,12 +40,20 @@ namespace Store.Repositorios
         /// Obtiene todos los productos
         /// </summary>
         /// <returns></returns>
-        public async Task<IReadOnlyList<Producto>> ObtenerProductosAsync()
+        public async Task<DatosColeccion<ProductoStore>> ObtenerProductosAsync(int pagina, int registros, IEnumerable<int> productoslist = null)
         {
-            return await _context.Productos
-                    .Include(p => p.Marca)
-                    .Include(P => P.Categoria)
-                    .ToListAsync();
+
+            var collection = await _context.ProductoStore.FromSqlRaw("select Productos.*,Categorias.Nombre as 'CategoriaNombre',Marcas.Nombre as 'marcaNombre'from Productos join Marcas on Marcas.Id = Productos.MarcaId join Categorias on Categorias.Id = Productos.CategoriaId").GetPagedAsync(pagina, registros); ;
+            /*
+            var collection = await _context.Productos
+                           .Where(x => productoslist == null || productoslist.Contains(x.ProductoId))
+                           .Include(p => p.Marca)
+                           .Include(P => P.Categoria)
+                           .OrderBy(x => x.ProductoId)
+                           .GetPagedAsync(pagina,registros);
+              */             
+
+            return collection.MapTo<DatosColeccion<ProductoStore>>();
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Store.Dominio.Entidades
+namespace Store.Servicio.Queries.Dto
 {
-    public class Categoria : EntidadBase
+    public class CategoriaDto : EntidadBase
     {
         public int Id { get; set; }
     }

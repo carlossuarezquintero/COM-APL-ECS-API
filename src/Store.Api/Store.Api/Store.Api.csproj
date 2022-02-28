@@ -18,8 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+   
     <ProjectReference Include="..\..\Store.Servicio.EventHandler\Store.Servicio.EventHandler.csproj" />
     <ProjectReference Include="..\..\Store.Servicio.Queries\Store.Servicio.Queries.csproj" />
+	
   </ItemGroup>
 
 </Project>

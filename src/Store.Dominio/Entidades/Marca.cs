@@ -9,6 +9,6 @@ namespace Store.Dominio.Entidades
 {
     public class Marca : EntidadBase
     {
-        public int MarcaId { get; set; }
+        public int Id { get; set; }
     }
 }

@@ -30,7 +30,7 @@ namespace Store.Api.Controllers
         /// <returns></returns>
 
         [HttpGet]
-        public async Task<ActionResult<List<Categoria>>> ObtenerMarcas()
+        public async Task<ActionResult<List<Categoria>>> Obtenercategoria()
         {
             var categorias = await _icategoriaQueryService.ObtenerCategoriaAsync();
             return Ok(categorias);
@@ -43,7 +43,7 @@ namespace Store.Api.Controllers
         /// <returns></returns>
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Categoria>> ObtenerMarcaId(int id)
+        public async Task<ActionResult<Categoria>> ObtenecategoriaId(int id)
         {
             var categoria = await _icategoriaQueryService.ObtenerCategoriaIdAsync(id);
             if (categoria == null)

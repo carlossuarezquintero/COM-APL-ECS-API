@@ -10,6 +10,8 @@
 		<PackageReference Include="StackExchange.Redis" Version="2.2.4" />
 	</ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Servicio.Comun.Mapeo\Servicio.Comun.Mapeo.csproj" />
+    <ProjectReference Include="..\Servicio.Comun.Paginacion\Servicio.Comun.Paginacion.csproj" />
     <ProjectReference Include="..\Store.Dominio\Store.Dominio.csproj" />
     <ProjectReference Include="..\Store.Persistencia\Store.Persistencia.csproj" />
   </ItemGroup>
