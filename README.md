@@ -63,7 +63,7 @@ Para implementar el proyecto es necesario instalar ambiente de SQL SERVER , REDI
 
 ### Ejecución
 
-Para ejecutar el proyecto se debe configurar las cadenas de ejecución a las 3 bases de datos ,ejecutar el proyecto, el se encarga de crear las bases de datos e insertar los datos semilla
+Para ejecutar el proyecto se debe configurar las cadenas de ejecución a las 3 bases de datos , despues ejecutar el proyecto. El se encarga de crear las bases de datos e insertar los datos semilla
 
 
 
