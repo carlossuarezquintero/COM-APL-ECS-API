@@ -16,7 +16,7 @@ STACK : NET 5 + SQL SERVER + REDIS
 General :computer:
 --------------------------------------
 
-E-Carvajal store [API]  es un proyecto desarollado en c# en el marco de trabajo NET 5 en arquitectura de Clean Architecture / Microservicios . a Este proyecto le fue modificado su metodo principal para Despliegue e intregacion continua. 
+E-Carvajal store [API]  es un proyecto desarollado en c# en el marco de trabajo NET 5 en arquitectura de Clean Architecture / Microservicios . Este proyecto le fue modificado su metodo principal para Despliegue e intregacion continua. 
 
 
 ### Bases de datos 
